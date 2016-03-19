@@ -1,0 +1,46 @@
+-title('Account Settings')
+
+.section-container
+  .section-header
+    .section-title= 'Change Username'
+  = form_for :user, url: account_settings_path do |f|
+    = hidden_field_tag 'attribute', 'username', id: nil
+    %table.horizontal-form
+      %col{span: 1, style: 'width: 114px'}
+      %col{span: 1, style: 'width: 425px'}
+      %tr
+        %td
+          = f.label :username, 'Username'
+        %td
+          = f.text_field :username, class: 'form-control form-control-lg', placeholder: 'Username'
+      %tr
+        %td
+        %td
+          = button_tag type: 'submit', class: 'btn btn-success' do
+            %span.glyphicon.glyphicon-ok.icon-spacer
+            Save
+
+.section-container
+  .section-header
+    .section-title= 'Change Email'
+  = form_for :user, url: account_settings_path do |f|
+    = hidden_field_tag 'attribute', 'email', id: nil
+    %table.horizontal-form
+      %col{span: 1, style: 'width: 114px'}
+      %col{span: 1, style: 'width: 425px'}
+      %tr
+        %td
+          = f.label :email, 'Email'
+        %td
+          = f.text_field :email, class: 'form-control form-control-lg', placeholder: 'Email'
+      %tr
+        %td
+        %td
+          = button_tag type: 'submit', class: 'btn btn-success' do
+            %span.glyphicon.glyphicon-ok.icon-spacer
+            Save
+
+.section-container
+  .section-header
+    .section-title= 'Freeze This Account'
+  -# TODO: Finish this!

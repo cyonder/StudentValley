@@ -1,0 +1,50 @@
+= form_tag do # TODO: form_tag search_path do
+  .input-group.roommates-search
+    = search_field_tag :search, nil, class: 'form-control', placeholder: 'Search in Ads'
+    .input-group-btn
+      %button.btn.btn-default
+        %span.glyphicon.glyphicon-search
+
+  = link_to new_roommate_path, class: 'btn btn-default post-ad-button' do
+    %span.glyphicon.glyphicon-bullhorn.icon-spacer
+    = 'Post an Roommate Ad'
+
+  .list-group
+    .section-title-2
+      %span.glyphicon.glyphicon-filter
+      = 'Filter'
+    .section-container-2
+      %small
+        .mb10= 'You can display the ads you would like to see by using the filter options below'
+      = form_tag do # TODO: form_tag roommate_filter_path do
+        .mb10= select_tag :roommate_province, options_for_select(options_for_roommates), {prompt: 'Select a Province', class: 'form-control select-roommate'}
+
+        .mb10= select_tag :roommate_city, options_for_select(options_for_roommates), {prompt: 'Select a City', class: 'form-control select-roommate'}
+
+        .checkbox
+          = label_tag :private_room do
+            = check_box_tag :private_room
+            %span.glyphpro.glyphpro-bedroom-nightstand.icon-spacer
+            = 'Private Room'
+        .checkbox
+          = label_tag :private_bathroom do
+            = check_box_tag :private_bathroom
+            %span.glyphpro.glyphpro-bath.icon-spacer
+            = 'Private Bathroom'
+        .checkbox
+          = label_tag :laundry_room do
+            = check_box_tag :laundry_room
+            %span.glyphpro.glyphpro-washing-machine.icon-spacer
+            = 'Laundry Room'
+        .checkbox
+          = label_tag :pet_friendly do
+            = check_box_tag :pet_friendly
+            %span.glyphpro.glyphpro-dog.icon-spacer
+            = 'Pet Friendly'
+        .checkbox
+          = label_tag :parking_spot do
+            = check_box_tag :parking_spot
+            %span.glyphpro.glyphpro-parking.icon-spacer
+            = 'Parking Spot'
+
+        .mt10= submit_tag 'Apply', class: 'btn btn-success btn-block'

@@ -1,0 +1,29 @@
+.welcome{}
+
+.signup{
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 3px;
+  padding: 20px;
+
+  h4{ margin-top: 0; }
+
+  // Fixed layout and width is necessary to break overflowing agreement text.
+  table{
+    table-layout: fixed;
+    width: 424px;
+  }
+
+  td{ padding-bottom: 10px }
+
+  tr:last-of-type > td{ padding-bottom: 0 }
+
+  span{
+    color: $brand-success;
+    font-weight: bold;
+  }
+
+  .agreement{
+    font-size: 13px;
+    word-wrap:break-word;
+  }
+}

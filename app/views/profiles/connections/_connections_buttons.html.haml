@@ -1,0 +1,19 @@
+- if locals[:button] == 'dropdown'
+  .btn-group.pull-right
+    %button.btn.btn-default.dropdown-toggle{ type: 'button', 'data-toggle': 'dropdown',
+    'aria-haspopup': 'true', 'aria-expanded': 'true'}
+      Connected
+      %span.caret
+    %ul.dropdown-menu
+      %li
+        = link_to '#' do
+          %span.glyphpro.glyphpro-message_plus.icon-spacer
+          Send Message
+      %li.divider{ role: 'separator' }
+      %li
+        = link_to "#disconnect-modal#{locals[:modal_id]}", 'data-toggle': 'modal', class: 'card-dropdown-disconnect' do
+          %span.glyphpro.glyphpro-user_add.icon-spacer
+          Disconnect
+  = render 'profiles/disconnect_modal', locals: { path: locals[:path], modal_id: locals[:modal_id] }
+- else
+  = link_to locals[:text], locals[:path], class: "btn #{locals[:color]} button card-button-size"

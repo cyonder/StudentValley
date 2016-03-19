@@ -1,0 +1,64 @@
+- title('Book Ads')
+-# TODO: Add Title with categories as well, like "Book Ads | Biographies"
+
+- if flash[:error].present?
+  .alert.alert-danger{ role: 'alert', style:'margin-bottom: 20px' }
+    .alert-title= 'Error'
+    = flash[:error].html_safe
+
+- if flash[:success].present?
+  .alert.alert-success{ role: 'alert', style:'margin-bottom: 20px' }
+    .alert-title= 'Success'
+    = flash[:success].html_safe
+#left-column
+  = render 'books/sidebar'
+#right-column
+  - if @my_books.length > 0
+    .section-title-2= 'My Book Ads'
+    %table.table.table-striped.my-book-ads
+      %tr
+        %th{style: 'width: 97px'}= 'Actions'
+        %th= 'Title'
+        %th{style: 'width: 150px'}= 'Posted On'
+        %th{style: 'width: 100px'}= 'Price'
+      - @my_books.each do |my_book|
+        = render 'books/delete_ad_modal', locals: { path: delete_book_path(my_book.id), modal_id: my_book.id }
+        %tr
+          %td
+            = link_to update_book_date_path(my_book.id), class: 'btn btn-default btn-xs tag-tooltip', 'data-toggle': 'modal',
+              'data-original-title': 'Repost', 'data-placement': 'bottom' do
+              %span.glyphicon.glyphicon-refresh
+            = link_to edit_book_path(my_book.id), class: 'btn btn-default btn-xs tag-tooltip', 'data-toggle': 'modal',
+              'data-original-title': 'Edit', 'data-placement': 'bottom' do
+              %span.glyphicon.glyphicon-edit
+            = link_to "#delete-ad-modal#{my_book.id}", class: 'btn btn-default btn-xs tag-tooltip', 'data-toggle': 'modal',
+              'data-original-title': 'Delete', 'data-placement': 'bottom' do
+              %span.glyphicon.glyphicon-trash
+          %td.my-ads-title
+            = link_to my_book.title, book_path(my_book.id)
+          %td
+            = my_book.book_time
+          %td
+            - if my_book.price == '0'
+              = 'Free'
+            - else
+              = number_to_currency(my_book.price)
+  .section-title-2= 'Book Ads'
+  .section-container-2.clearfix
+    - if @books.length > 0
+      - @books.each do |book|
+        .book-ad.clearfix
+          .book-photo.pull-left= image_tag book.photo.url(:thumb)
+          .book-info.pull-left
+            .book-title= link_to book.title, book_path(book.id)
+            .book-time= "#{book.book_time} | #{book.category}"
+            .book-description= truncate(strip_tags(book.description), length: 150)
+          .book-price.pull-right
+            - if book.price == '0'
+              = 'Free'
+            - else
+              = number_to_currency(book.price)
+    - else
+      Unfortunately there is no any book ad to display in the selected category.
+
+  -# TODO: Add pagination.

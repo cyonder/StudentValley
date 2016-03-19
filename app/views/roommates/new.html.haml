@@ -1,0 +1,11 @@
+- title('Post a New Roommate Ad')
+
+#left-column
+  = render 'roommates/sidebar'
+#right-column
+  .section-container.clearfix
+    .section-header
+      .section-title= 'Post a New Ad for New Roommates'
+    = form_for :roommate, html: {multipart: true}, url: new_roommate_path do |f|
+      = hidden_field_tag 'attribute', 'photo', id: nil
+      = render partial: 'roommates/form', locals: {f: f}

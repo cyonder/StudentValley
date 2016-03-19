@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="StudentValley_development" uuid="d5af2361-44b3-4343-bf93-ac272776a81e">
+      <secret-storage>master_key</secret-storage>
+      <user-name>StudentValley</user-name>
+      <schema-pattern>StudentValley_development.*</schema-pattern>
+      <default-schemas>StudentValley_development.*</default-schemas>
+    </data-source>
+  </component>
+</project>

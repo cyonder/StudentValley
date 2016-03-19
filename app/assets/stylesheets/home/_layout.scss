@@ -1,0 +1,102 @@
+#background{
+  background: url("student_valley_background.jpg") top center fixed;
+  background-size: cover;
+  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.52); //TODO: Use better box-shadow here.
+  min-width: 980px; // If window minimized less than 980px, background picture won't be cut with this.
+}
+
+#container{
+  margin: auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  width: 980px;
+}
+
+header{
+  margin-bottom: 50px;
+  height: 94px; // Without this, home-panel and buttons will move body down
+}
+
+#logo{
+  padding-top: 17px; /* Vertical logo alignment with login */
+
+  a{
+    background: url("student_valley_logo.png") no-repeat;
+    background-size: 260px 60px; /* Size of logo */
+    display: inline-block;
+    height: 60px; /* Height of logo */
+    width: 260px; /* Width of logo */
+  }
+}
+
+#login{
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 3px;
+  padding: 20px;
+
+  .checkbox{ /* Removing default margin value in checkbox class. So, it removes unnecessary space around checkbox */
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  td{
+    padding-right: 10px;
+    &:last-of-type{padding-right: 0}
+  }
+}
+
+#body{ margin: auto }
+
+.buttons{
+  position: relative;
+  top: -50px; /* Stick buttons to the top */
+
+  a{
+    background-color: $brand-primary;
+    @include border-top-radius(0);
+    @include border-bottom-radius($border-radius-base);
+    font-weight: bold;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    -webkit-box-shadow: 0 0 8px -2px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 0 0 8px -2px rgba(0, 0, 0, 1);
+    box-shadow: 0 0 8px -2px rgba(0, 0, 0, 1);
+    width: 75px;
+  }
+}
+
+.home-panel{
+  background-color: rgba(255, 255, 255, 0.7);
+  @include border-top-radius(0);
+  @include border-bottom-radius(5px);
+  font-size: 16px;
+  padding: 10px;
+  position: relative;
+  top: -50px; /* Stick panel to the top */
+  width: 200px;
+
+  -webkit-box-shadow: 0 0 8px -2px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0 0 8px -2px rgba(0, 0, 0, 1);
+  box-shadow: 0 0 8px -2px rgba(0, 0, 0, 1);
+
+  .home-panel-info{
+    @include text-overflow;
+    width: 125px;
+  }
+
+  img{
+    margin-right: 10px;
+    height: 43px;
+    width: 43px;
+  }
+
+  .home-panel-text{
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+}
+
+
+// Overriding the default border color (#D3E0E9)
+.form-control{ border-color: #CCCCCC; }
+.input-group-addon{ border-color: #CCCCCC; }

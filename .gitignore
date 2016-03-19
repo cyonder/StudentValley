@@ -1,0 +1,11 @@
+# Ignore database.yml and secrets.yml
+/config/*.yml
+
+# Ignore files created by system (photos uploaded by user etc.)
+/public/system
+
+# Ignore all logfiles and tempfiles.
+/log/*
+!/log/.keep
+/tmp
+.DS_Store

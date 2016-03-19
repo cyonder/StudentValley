@@ -1,0 +1,31 @@
+- title('Log into Student Valley | Student Valley')
+
+.form-container
+  .form-title= 'Student Valley Log In'
+
+  - if flash[:description].present?
+    .alert.alert-danger{ role: 'alert' }
+      .alert-title= flash[:title]
+      = flash[:description].html_safe
+
+  = form_tag login_path do
+    .input-group.form-group
+      .input-group-addon
+        %span.glyphicon.glyphicon-user
+      = label_tag :login_id, 'Email or Username', class: 'sr-only'
+      = text_field_tag :login_id, nil, class: 'form-control form-control-lg', placeholder: 'Email or Username'
+
+    .input-group.form-group
+      .input-group-addon
+        %span.glyphpro.glyphpro-keys
+      = label_tag :password, 'Password', class: 'sr-only'
+      = password_field_tag :password, nil, class: 'form-control form-control-lg', placeholder: 'Password'
+
+    .checkbox
+      = label_tag :remember_me do
+        = check_box_tag :remember_me
+        = 'Remember me'
+
+    .clearfix
+      .pull-left= submit_tag 'Log In', class: 'btn btn-primary'
+      .pull-right.second-button= link_to 'Forgot your password?', forgot_path

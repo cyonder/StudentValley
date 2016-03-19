@@ -1,0 +1,13 @@
+- title('Post a New Book Ad')
+
+= books_error_messages_for(@book)
+
+#left-column
+  = render 'books/sidebar'
+#right-column
+  .section-container
+    .section-header
+      .section-title= 'Post a New Ad for Your Book'
+    = form_for :book, html: {multipart: true}, url: new_book_path do |f|
+      = hidden_field_tag 'attribute', 'photo', id: nil
+      = render partial: 'books/form', locals: {f: f}

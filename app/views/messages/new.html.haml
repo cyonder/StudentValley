@@ -1,0 +1,18 @@
+#left-column
+  = render 'messages/conversations'
+#right-column
+  -# TODO: This whole new message system needs to be working.
+  .section-title-2
+    = 'New Message'
+  .messages-container
+    .messages-wrapper
+      .input-group.recipient_name
+        %span.input-group-addon
+          %span.glyphicon.glyphicon-user
+        %form
+          = text_field_tag :recipient_name, nil, class: 'form-control', placeholder: 'Enter Recipient Name'
+    .message-form-container
+      .message-form-wrapper
+        = form_for :message, url: '#' do |f|
+          = f.text_area :message, class: 'form-control', placeholder: 'Write a reply...'
+          .clearfix= submit_tag 'Send', class: 'btn btn-primary pull-right'

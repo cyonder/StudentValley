@@ -1,0 +1,33 @@
+= form_tag do # TODO: form_tag search_path do
+  .input-group.books-search
+    = search_field_tag :search, nil, class: 'form-control', placeholder: 'Search in Ads'
+    .input-group-btn
+      %button.btn.btn-default
+        %span.glyphicon.glyphicon-search
+
+  = link_to new_book_path, class: 'btn btn-default post-ad-button' do
+    %span.glyphicon.glyphicon-bullhorn.icon-spacer
+    = 'Post an Book Ad'
+
+  .list-group
+    .section-title-2
+      %span.glyphpro.glyphpro-list-alt
+      = 'Categories'
+    = active_link_to books_path, class: 'list-group-item' do
+      = 'All'
+    = active_link_to books_category_path('biographies'), class: 'list-group-item' do
+      = 'Biographies'
+    = active_link_to books_category_path('children-s-books'), class: 'list-group-item' do
+      = 'Children\'s Books'
+    = active_link_to books_category_path('comics-and-graphic-novels'), class: 'list-group-item' do
+      = 'Comics & Graphic Novels'
+    = active_link_to books_category_path('literature-and-fiction'), class: 'list-group-item' do
+      = 'Literature & Fiction'
+    = active_link_to books_category_path('magazines'), class: 'list-group-item' do
+      = 'Magazines'
+    = active_link_to books_category_path('textbooks'), class: 'list-group-item' do
+      = 'Textbooks'
+    = active_link_to books_category_path('young-adult'), class: 'list-group-item' do
+      = 'Young Adult'
+    = active_link_to books_category_path('other'), class: 'list-group-item' do
+      = 'Other'

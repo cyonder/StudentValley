@@ -1,0 +1,26 @@
+- title("Received Requests | #{@profile.first_name} #{@profile.last_name}")
+
+- if @profile.id == current_user.id
+  .section-container.clearfix
+    .section-header.clearfix
+      = render 'profiles/connections/connections_header'
+
+    .connection-container
+      - if current_user.requested_friends.size > 0
+        - current_user.requested_friends.each do |friend|
+          .card-container-large.clearfix.pull-left
+            .card-photo.pull-left
+              = image_tag friend.photo.url(:thumb)
+            .card-details-large.pull-left
+              .card-item= link_to "#{friend.first_name} #{friend.last_name}", profile_path(friend.id)
+              -unless friend.school.blank?
+                .card-item= friend.school
+              -unless friend.program.blank?
+                .card-item= friend.program
+            .card-tools.pull-right
+              = link_to 'Accept Request', accept_path(friend.id), class: 'btn btn-success'
+              = link_to 'Decline Request', decline_path(friend.id), class: 'btn btn-warning'
+      - else
+        = 'You don\'t have any received connection request.'
+- else
+  - controller.redirect_to received_requests_path(current_user.id)

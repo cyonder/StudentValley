@@ -1,0 +1,73 @@
+// -------------------------------------------------------------------------- //
+// -- Form Container -------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
+// Form Container represents the following pages:
+// 1. Signup
+// 2. Login
+// 3. Forgot
+// 4. Reset
+// -------------------------------------------------------------------------- //
+
+.form-container{
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 3px;
+  padding: 20px;
+
+  // Fixed layout and width is necessary to break overflowing agreement text.
+  table{
+    table-layout: fixed;
+    width: 424px;
+  }
+
+  td{ padding-bottom: 10px }
+
+  tr:last-of-type > td{ padding-bottom: 0 }
+
+  .agreement{
+    font-size: 13px;
+    word-wrap: break-word;
+  }
+}
+
+.form-title{
+  // TODO: in non-retina screens, title looks bad. (your monitor !?)
+  // TODO: try using open sans bold font instead of using font-weight: bold.
+  border-bottom: 2px solid $brand-primary;
+  color: #FFFFFF;
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 2px #000000;
+  -moz-text-shadow: 0 0 2px #000000;
+  -webkit-text-shadow: 0 0 2px #000000;
+}
+
+// -------------------------------------------------------------------------- //
+// -- Pages Container ------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
+// Pages Container represents the following pages:
+// 1. About
+// 2. Contact
+// 3. Faq
+// 4. Privacy
+//
+// Note: Index page has its own SCSS file. Even though, index is in the same
+// controller with the pages written above.
+// -------------------------------------------------------------------------- //
+
+.pages-container{
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: $border-radius-base;
+  font-size: 16px;
+  padding: 20px;
+}
+
+.pages-title{
+  border-bottom: 2px solid $brand-primary;
+  color: $brand-primary;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+}

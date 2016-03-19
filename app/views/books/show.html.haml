@@ -1,0 +1,40 @@
+- title("#{@book.title}")
+
+- user = User.find_by_id(@book.seller_id)
+
+= render 'books/delete_ad_modal', locals: { path: delete_book_path(@book.id), modal_id: '' }
+
+- if flash[:notice].present?
+  .alert.alert-success{ role: 'alert', style:'margin-bottom: 20px' }
+    .alert-title= 'Success'
+    = flash[:notice].html_safe
+#left-column
+  = render 'books/sidebar'
+#right-column
+  .section-container.clearfix
+    .section-header
+      .section-title= @book.title
+    .book-ad-column.pull-left
+      .book-ad-photo= image_tag @book.photo.url(:book)
+      - if @book.seller_id == current_user.id
+        .book-ad-buttons
+          = link_to 'Edit This Ad', edit_book_path(@book.id), class: 'btn btn-info button-ad-button-size'
+          = link_to 'Delete This Ad', '#delete-ad-modal', 'data-toggle': 'modal', class: 'btn btn-danger button-ad-button-size'
+      .book-ad-details
+        .book-ad-item
+          %span.glyphicon.glyphicon-user.icon-spacer
+          = link_to "#{user.first_name} #{user.last_name}", profile_path(user.id)
+        .book-ad-item
+          %span.glyphicon.glyphicon-calendar.icon-spacer
+          = @book.book_time
+        .book-ad-item
+          %span.glyphicon.glyphicon-usd.icon-spacer
+          %span.book-ad-price
+            - if @book.price == '0'
+              = 'Free'
+            - else
+              = number_to_currency(@book.price, unit: '')
+        .book-ad-item
+          %span.glyphicon.glyphicon-book.icon-spacer
+          = @book.category
+    .book-ad-description.pull-right= @book.description.html_safe

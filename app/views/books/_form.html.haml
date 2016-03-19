@@ -1,0 +1,38 @@
+%table.horizontal-form
+  %col{span: 1, style: 'width: 114px'}
+  %col{span: 1, style: 'width: 425px'}
+  %tr
+    %td
+      = f.label :photo, 'Book Photo'
+    %td
+      .input-group.form-control-md
+        %span.input-group-btn
+          %span.btn.btn-primary.btn-file
+            %span.glyphicon.glyphicon-camera{style: 'color: white'} #{f.file_field :photo}
+        %input.form-control{readonly: '', type: 'text'}
+  %tr
+    %td
+      = f.label :category, 'Category'
+    %td
+      = f.select :category, options_for_categories, {prompt: 'Select a Category'}, {class: 'form-control select-book-category form-control-md'}
+  %tr
+    %td
+      = f.label :price, 'Price'
+    %td
+      .input-group.form-control-md
+        .input-group-addon= '$'
+        = f.text_field :price, class: 'form-control', placeholder: '0.00', data: {autonumeric: {vMax: '99999.99'}}
+  %tr
+    %td
+      = f.label :title, 'Ad Title'
+    %td
+      = f.text_field :title, class: 'form-control form-control-lg', placeholder: 'Ad Title'
+
+.mt10
+  = f.text_area :description, id: 'book-description'
+  -# TODO: There is a problem with problem. Do copy-paste. Because of p tag.
+
+.mt10{style: 'margin-left: 208px;'}
+  = button_tag type: 'submit', class: 'btn btn-success' do
+    %span.glyphicon.glyphicon-send.icon-spacer
+    Post It

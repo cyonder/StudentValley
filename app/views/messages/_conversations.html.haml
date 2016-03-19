@@ -1,0 +1,19 @@
+.section-title-2
+  = 'Inbox'
+  .section-tools.pull-right{style: 'margin: -1px'}
+    = link_to new_message_path, class: 'btn btn-default btn-xs tag-tooltip', data: {toggle: 'tooltip'},
+      'data-original-title': 'New Conversation', 'data-placement': 'bottom' do
+      %span.glyphicon.btn-glyphicon.glyphicon-pencil
+.conversations.list-group
+  - @conversations.each do |conversation|
+    - user = User.find_by_id(conversation.correspondent)
+    - last = Message.all_messages(conversation.correspondent, current_user.id).last
+    - total_unread_messages = Message.user_unread_messages(conversation.correspondent, current_user.id).length
+
+    = link_to messages_path(user.id), class: 'conversation list-group-item clearfix' do
+      .conversation-photo.pull-left
+        = image_tag user.photo.url(:thumb)
+      .conversation-details.pull-left
+        .conversation-name= "#{user.first_name} #{user.last_name}"
+        .conversation-message= last.message
+      .conversation-unread.pull-right= total_unread_messages.to_s

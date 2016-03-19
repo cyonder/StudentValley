@@ -1,0 +1,12 @@
+.modal.fade{ id: "delete-ad-modal#{locals[:modal_id]}" }
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button{ type: 'button', class: 'close', 'data-dismiss': 'modal', 'aria-label': 'Close' }
+          %span{ 'aria-hidden': 'true' } &times;
+        %h4.modal-title= 'Are you sure?'
+      .modal-body
+        You are about to delete this ad. This action cannot be reversed. Would you like to continue?
+      .modal-footer
+        %button{ type: 'button', class: 'btn btn-default', 'data-dismiss': 'modal' }= 'Cancel'
+        = link_to 'Delete', locals[:path], class: 'btn btn-danger'

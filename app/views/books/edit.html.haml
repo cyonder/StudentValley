@@ -1,0 +1,13 @@
+- title("Edit | #{@book.title}")
+
+= books_error_messages_for(@book)
+
+#left-column
+  = render 'books/sidebar'
+#right-column
+  .section-container
+    .section-header
+      .section-title= 'Edit This Book Ad'
+    = form_for :book, html: {multipart: true}, url: edit_book_path do |f|
+      = hidden_field_tag 'attribute', 'photo', id: nil
+      = render partial: 'books/form', locals: {f: f}

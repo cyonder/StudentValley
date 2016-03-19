@@ -1,0 +1,25 @@
+- title("Sent Requests | #{@profile.first_name} #{@profile.last_name}")
+
+- if @profile.id == current_user.id
+  .section-container.clearfix
+    .section-header.clearfix
+      = render 'profiles/connections/connections_header'
+
+    .connection-container
+      - if current_user.pending_friends.size > 0
+        - current_user.pending_friends.each do |friend|
+          .card-container-large.clearfix.pull-left
+            .card-photo.pull-left
+              = image_tag friend.photo.url(:thumb)
+            .card-details-large.pull-left
+              .card-item= link_to "#{friend.first_name} #{friend.last_name}", profile_path(friend.id)
+              -unless friend.school.blank?
+                .card-item= friend.school
+              -unless friend.program.blank?
+                .card-item= friend.program
+            .card-tools.pull-right
+              = link_to 'Cancel Request', cancel_path(friend.id), class: 'btn btn-info'
+      - else
+        = 'You don\'t have any sent connection request.'
+- else
+  - controller.redirect_to sent_requests_path(current_user.id)

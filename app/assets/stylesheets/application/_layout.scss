@@ -1,0 +1,66 @@
+body{ background-color: $background-2; }
+
+#left-column{
+  float: left;
+  width: 230px;
+}
+
+#right-column{
+  float: right;
+  width: 730px;
+}
+
+header{
+  background-color: $brand-primary;
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+#header-wrapper{
+  margin: auto;
+  width: 980px;
+}
+
+#logo{
+  margin-top: 5px;
+
+  a{
+    background: url("student_valley_logo.png") no-repeat;
+    background-size: 173px 40px; /* Size of logo */
+    display: inline-block;
+    height: 40px; /* Height of logo */
+    width: 173px; /* Width of logo */
+  }
+}
+
+#header-search{
+  margin-left: 20px;
+  margin-top: 8px;
+  width: 350px;
+}
+
+#navigation{ margin-top: 8px; }
+
+.notification{ position: relative }
+
+.notification[data-badge]:after{
+  content: attr(data-badge);
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  font-size: .7em;
+  font-weight: bold;
+  background: $brand-success;
+  color: #FFFFFF;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  line-height: 16px;
+  border-radius: 100%;
+  box-shadow: 0 0 1px #333333;
+}
+
+#body{
+  margin: auto;
+  width: 980px;
+}

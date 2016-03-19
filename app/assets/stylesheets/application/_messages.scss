@@ -1,0 +1,119 @@
+.conversations{
+  background-color: $background;
+  border: 1px solid $border-color-base;
+  @include border-bottom-radius($border-radius-base);
+  height: 592px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+
+  &:hover{ overflow-y: auto; }
+
+  .list-group-item{
+    border-radius: 0;
+    border: 0;
+  }
+}
+
+.conversation{ width: 228px; }
+
+.conversation-photo{
+  border: 1px solid $border-color-base;
+  margin-right: 5px;
+
+  img{
+    height: 38px;
+    width: 38px;
+  }
+}
+
+.conversation-details{ width: 141px }
+
+.conversation-name{
+  @include text-overflow;
+  font-weight: bold;
+  width: 141px
+}
+
+.conversation-message{
+  color: $gray;
+  @include text-overflow;
+  width: 141px
+}
+
+.conversation-unread{
+  background-color: $background-2;
+  border: 1px solid $border-color-base;
+  border-radius: $border-radius-base;
+  //color: $color-text-dark;
+  margin-top: 9px;
+  text-align: center;
+  width: 22px;
+}
+
+.messages-container{
+  background-color: $background;
+  border: 1px solid $border-color-base;
+  @include border-bottom-radius($border-radius-base);
+
+  // This is for the border around recipient id
+  .input-group-addon{ border-color: $border-color-base; }
+  .recipient_name { width: 708px; }
+}
+
+.messages-wrapper{
+  padding: 10px 0 10px 10px;
+  height: 476px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+
+  &:hover{ overflow-y: auto; }
+}
+
+.message{
+  margin-bottom: 10px;
+  width: 708px;
+
+  &:last-child{ margin-bottom: 0 }
+}
+
+.message-photo{
+  margin-right: 10px;
+
+  .photo-frame{ padding: 0 }
+
+  img{
+    height: 40px;
+    width: 40px;
+  }
+}
+
+.message-header{ width: 658px }
+
+.message-name{
+  @include text-overflow;
+  width: 553px;
+}
+
+.message-date{
+  color: $gray;
+  font-size: 12px;
+  text-align: right;
+  width: 100px;
+}
+
+.message-body{ width: 658px }
+
+.message-form-container{ border-top: 1px solid $border-color-base }
+
+.message-form-wrapper{
+  background-color: $gray-lighter;
+  padding: 10px;
+
+  textarea{
+    resize: none;
+    border-color: $border-color-base;
+    max-height: 200px;
+  }
+
+  input[type = submit]{ margin-top: 5px}
+}

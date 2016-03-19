@@ -1,0 +1,25 @@
+- title("Connections | #{@profile.first_name} #{@profile.last_name}")
+
+.section-container.clearfix
+  .section-header.clearfix
+    = render 'profiles/connections/connections_header'
+
+  %div
+    - if @profile.friends.size > 0
+      - @profile.friends.each do |friend|
+        .card-container-small.clearfix.pull-left
+          .card-photo.pull-left
+            = image_tag friend.photo.url(:thumb)
+          .card-details-small.pull-left
+            .card-item= link_to "#{friend.first_name} #{friend.last_name}", profile_path(friend.id)
+            -unless friend.school.blank?
+              .card-item= friend.school
+            -unless friend.program.blank?
+              .card-item= friend.program
+          .card-tools.pull-right
+            = display_connections_buttons(friend)
+    - else
+      - if @profile == current_user
+        You don't have any connections now. You can use search to find your friends and connect them.
+      - else
+        = "#{@profile.first_name} does not have any friends now."

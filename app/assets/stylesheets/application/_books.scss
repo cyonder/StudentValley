@@ -1,0 +1,119 @@
+.books-search{ margin-bottom: 20px; }
+
+.post-ad-button{
+  display: block;
+  margin-bottom: 20px;
+}
+
+.book-ad{
+  background-color: $background-2;
+  border: 1px solid $border-color-base;
+  border-radius: $border-radius-base;
+  margin-bottom: 10px;
+  padding: 10px;
+
+  img{
+    width: 78px;
+    height: 78px;
+    padding: 0;
+  }
+
+  &:last-child{ margin-bottom: 0 }
+}
+
+.book-info{ width: 530px }
+
+.book-title{
+  @include text-overflow;
+  width: 530px;
+}
+
+.book-photo{ margin-right: 10px }
+
+.book-time{
+  color: $gray;
+  font-size: 12px;
+}
+
+.book-description{ word-wrap: break-word; }
+
+.book-price{
+  margin-top: 33px;
+  font-family: "Open Sans Semibold";
+}
+
+.my-book-ads{
+  background-color: $background;
+  margin-bottom: 20px;
+  border: 1px solid $border-color-base;
+  table-layout: fixed;
+
+  .my-ads-title{ @include text-overflow; }
+
+  img{
+    width: 38px;
+    height: 38px;
+    padding: 0;
+  }
+}
+
+.post-book-ad{
+  background-color: $background;
+  border: 1px solid $border-color-base;
+  @include border-bottom-radius(3px);
+  padding: 10px;
+
+  input[type = submit]{ margin-left: 109px }
+}
+
+.book-ad-column{ width: 208px; }
+
+.book-ad-photo{
+  background-color: $background-2;
+  border: 1px solid $border-color-base;
+  height: 206px;
+  margin-bottom: 10px;
+  position: relative;
+  width: 206px;
+
+  img{
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+}
+
+.book-ad-description{
+  word-wrap: break-word;
+  width: 490px;
+}
+
+.book-ad-details{ border-right: 1px solid $border-color-base; }
+
+.book-ad-price{
+  color: lighten($state-success-text, 20%);
+  font-weight: bold;
+}
+
+.book-ad-item{
+  @include text-overflow;
+  margin-bottom: 5px;
+  &:last-child{ margin-bottom: 0; }
+}
+
+.button-ad-button-size{
+  display: block;
+  margin-bottom: 5px;
+  &:last-child{ margin-bottom: 0; }
+}
+
+.book-ad-buttons{
+  margin-bottom: 10px;
+}

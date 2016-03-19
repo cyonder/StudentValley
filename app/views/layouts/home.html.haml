@@ -1,0 +1,58 @@
+!!! 5
+%html
+  %head
+  %title= yield(:title).presence || 'Student Valley'
+  %meta{ charset: 'utf-8' }
+  %meta{ name: 'viewport', content:'width=device-width, initial-scale=1' }
+  %meta{ 'http-equiv': 'x-ua-compatible', content: 'ie=edge' }
+  = stylesheet_link_tag 'home', 'data-turbolinks-track': true
+  = javascript_include_tag 'home', 'data-turbolinks-track': true
+  = csrf_meta_tag
+  %body
+    #background
+      #container
+        %header.clearfix
+          #logo.text-hide.pull-left
+            = link_to 'Student Valley', root_path, title: 'Go to Student Valley'
+          - if current_path?(root_path)
+            #login.pull-right
+              = form_tag login_path do
+                %table
+                  %tr
+                    %td
+                      = label_tag :login_id, 'Email or Username', class: 'sr-only'
+                      = text_field_tag :login_id, nil, class: 'form-control form-control-sm', placeholder:'Email or Username'
+                    %td
+                      = label_tag :password, 'Password', class: 'sr-only'
+                      = password_field_tag :password, nil, class: 'form-control form-control-sm', placeholder: 'Password'
+                    %td= submit_tag 'Log In', class: 'btn btn-primary'
+                  %tr
+                    %td.checkbox
+                      = label_tag :remember_me do
+                        = check_box_tag :remember_me
+                        = 'Remember me'
+                    %td= link_to 'Forgot your password?', forgot_path
+          - elsif current_path?(login_path)
+            .buttons.pull-right
+              =link_to 'Go to <br/ >Sign Up'.html_safe, signup_path, class: 'btn btn-primary'
+          - elsif current_path?(signup_path)
+            .buttons.pull-right
+              =link_to 'Go to <br/ >Log In'.html_safe, login_path, class: 'btn btn-primary'
+          - elsif cookies[:authorization_token]
+            .home-panel.pull-right
+              .home-panel-text= 'You are logged in as:'
+              .pull-left
+                = image_tag current_user.photo.url(:thumb)
+              .panel-wrapper.clearfix
+                .home-panel-info.pull-left
+                  = link_to "#{current_user.first_name} #{current_user.last_name}", profile_path(current_user.id)
+                .home-panel-info.pull-left
+                  = current_user.school
+          - else
+            .buttons.pull-right
+              =link_to 'Go to <br/ >Sign Up'.html_safe, signup_path, class: 'btn btn-primary'
+              =link_to 'Go to <br/ >Log In'.html_safe, login_path, class: 'btn btn-primary'
+        #body.clearfix{ style: body_width }
+          = yield
+  %footer
+    = render partial: 'layouts/footer'

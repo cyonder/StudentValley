@@ -1,0 +1,33 @@
+- user = User.find(params[:id])
+-# TODO: Can we put this in model?
+- title("Messages | #{user.first_name} #{user.last_name}")
+-# TODO: Delete conversation needs to be working!
+-# TODO: After some messages, we should be displaying "show older messages" button or auto display when scrolled up.
+#left-column
+  = render 'messages/conversations'
+#right-column
+  .section-title-2
+    = "#{user.first_name} #{user.last_name}"
+    .section-tools.pull-right{style: 'margin: -1px'}
+      = link_to '#', class: 'btn btn-default btn-xs tag-tooltip', data: {toggle: 'tooltip'},
+        'data-original-title': 'Delete Conversation', 'data-placement': 'bottom' do
+        %span.glyphicon.btn-glyphicon.glyphicon-trash
+  .messages-container
+    .messages-wrapper#messages-wrapper
+      - @messages.each do |message|
+        - sender = User.find(message.sender_id)
+        .message.clearfix
+          .message-photo.pull-left
+            = image_tag sender.photo.url(:thumb)
+          .message-header.pull-left
+            .message-name.pull-left
+              = link_to "#{sender.first_name} #{sender.last_name}", profile_path(sender.id)
+            .message-date.pull-right
+              = message.message_time
+          .message-body.pull-left
+            = message.message
+    .message-form-container
+      .message-form-wrapper
+        = form_for :message, url: messages_path do |f|
+          = f.text_area :message, class: 'form-control', placeholder: 'Write a reply...'
+          .clearfix= submit_tag 'Reply', class: 'btn btn-primary pull-right'

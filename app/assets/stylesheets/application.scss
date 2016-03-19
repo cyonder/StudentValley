@@ -1,0 +1,24 @@
+@import "bootstrap-sprockets";
+@import "base/variables"; // This should be added before bootstrap
+@import "bootstrap";
+
+@import "font-awesome";
+
+@import "froala_editor.min.css";
+@import "froala_style.min.css";
+@import "plugins/colors.min.css";
+
+@import "select2.css";
+@import "select2-bootstrap.css";
+@import "glyphiconspro";
+
+@import "base/helpers";
+@import "base/typography";
+@import "base/global";
+
+@import "application/layout";
+@import "application/dashboard";
+@import "application/profiles";
+@import "application/messages";
+@import "application/books";
+@import "application/roommates";

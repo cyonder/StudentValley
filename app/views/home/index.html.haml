@@ -1,0 +1,37 @@
+- title('Welcome to Student Valley - Everything You Need As A Student')
+
+.welcome.pull-left
+  -# TODO: You may wanna put some introduction video here or
+.signup.pull-right
+  = form_for :user, url: signup_path do |f|
+    %table
+      %h4
+        %span= 'Sign Up'
+        to Student Valley -
+        %em= 'It\'s free'
+      %tr.clearfix
+        %td.pull-left
+          = label_tag :first_name, 'First Name', class: 'sr-only'
+          = f.text_field :first_name, class: 'form-control form-control-md', placeholder: 'First Name'
+        %td.pull-right
+          = label_tag :last_name, 'Last Name', class: 'sr-only'
+          = f.text_field :last_name, class: 'form-control form-control-md', placeholder: 'Last Name'
+      %tr
+        %td
+          = label_tag :email, 'Email', class: 'sr-only'
+          = f.email_field :email, class: 'form-control form-control-lg', placeholder: 'Email'
+      %tr
+        %td
+          = label_tag :email_confirmation, 'Email Confirmation', class: 'sr-only'
+          = f.email_field :email_confirmation, class: 'form-control form-control-lg', placeholder: 'Re-type Email'
+      %tr
+        %td
+          = label_tag :password, 'Password', class: 'sr-only'
+          = f.password_field :password, class: 'form-control form-control-lg', placeholder: 'Password'
+      %tr
+        %td.agreement
+          By clicking Sign Up, you agree to Student Valley's #{link_to 'Terms of Service', terms_path}
+          and #{link_to 'Privacy Policy', privacy_path}.
+      %tr
+        %td.pull-right
+          = submit_tag 'Sign Up', class: 'btn btn-success'

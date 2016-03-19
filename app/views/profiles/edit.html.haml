@@ -1,0 +1,28 @@
+= settings_error_messages_for(@profile)
+
+- if flash[:notice].present?
+  .alert.alert-success{ role: 'alert', style:'margin-bottom: 20px' }
+    .alert-title= 'Success'
+    = flash[:notice].html_safe
+
+#left-column
+  .list-group
+    .section-title-2= 'Personal Settings'
+    = active_link_to profile_settings_path, class: 'list-group-item' do
+      .clearfix
+        .pull-left= 'Profile'
+        .pull-right
+          %span.glyphicon.glyphicon-user
+    = active_link_to password_settings_path, class: 'list-group-item' do
+      .clearfix
+        .pull-left= 'Password'
+        .pull-right
+          %span.glyphpro.glyphpro-keys
+    = active_link_to account_settings_path, class: 'list-group-item' do
+      .clearfix
+        .pull-left= 'Account'
+        .pull-right
+          %span.glyphpro.glyphpro-settings
+
+#right-column
+  = display_settings_content

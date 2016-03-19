@@ -1,0 +1,23 @@
+-title('Reset Your Password | Student Valley')
+
+.form-container
+  .form-title= 'Reset Your Password'
+  .alert.alert-info{ role: 'alert' }
+    Type your new password in the fields below.
+
+  = form_for :user, url: reset_path do |f|
+    .input-group.form-group
+      .input-group-addon
+        %span.glyphicon.glyphicon-lock
+      = f.label :password, 'Password', class: 'sr-only'
+      = f.password_field :password, class: 'form-control form-control-lg', placeholder: 'Password'
+
+    .input-group.form-group
+      .input-group-addon
+        %span.glyphicon.glyphicon-repeat
+      = f.label :password_confirmation, 'Password Confirmation', class: 'sr-only'
+      = f.password_field :password_confirmation, class: 'form-control form-control-lg', placeholder: 'Re-type Password'
+
+    .clearfix
+      .pull-left= submit_tag 'Change Password', class: 'btn btn-primary'
+      .pull-right.second-button= link_to 'Cancel', login_path

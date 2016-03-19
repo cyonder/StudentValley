@@ -1,0 +1,14 @@
+= render 'profiles/disconnect_modal', locals: {path: locals[:path], modal_id: ''}
+
+.profile-buttons
+  - if locals[:button] == 'disconnect'
+    = link_to 'Disconnect', '#disconnect-modal', 'data-toggle': 'modal', class: 'btn btn-danger profile-button-size'
+  - elsif locals[:button] == 'accept'
+    = link_to 'Accept Request', accept_path(@profile.id), class: 'btn btn-success profile-button-size'
+    = link_to 'Decline Request', decline_path(@profile.id), class: 'btn btn-warning profile-button-size'
+  - elsif locals[:button] == 'cancel'
+    = link_to 'Cancel Request', cancel_path(@profile.id), class: 'btn btn-info profile-button-size'
+  - else
+    = link_to 'Connect', connect_path(@profile.id), class: 'btn btn-primary profile-button-size'
+
+  = link_to 'Send Message', '#', class: 'btn btn-default profile-button-size'

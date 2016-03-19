@@ -1,0 +1,17 @@
+-title('Forgot Your Password? | Student Valley')
+
+.form-container
+  .form-title= 'Forgot Your Password?'
+  .alert.alert-info{ role: 'alert' }
+    If you have forgotten your password, enter your registered email or username and we will send you an email to reset your password.
+
+  = form_tag forgot_path do
+    .input-group.form-group
+      .input-group-addon
+        %span.glyphicon.glyphicon-envelope
+      = label_tag :login_id, 'Email or Username', class: 'sr-only'
+      = text_field_tag :login_id, nil, class: 'form-control form-control-lg', placeholder: 'Email or Username'
+
+    .clearfix
+      .pull-left= submit_tag 'Continue', class: 'btn btn-primary'
+      .pull-right.second-button= link_to 'Cancel', login_path

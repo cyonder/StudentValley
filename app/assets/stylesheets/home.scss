@@ -1,0 +1,13 @@
+@import "bootstrap-sprockets";
+@import "base/variables"; // This should be added before bootstrap
+@import "bootstrap";
+
+@import "../../../vendor/assets/stylesheets/glyphiconspro";
+@import "../../../vendor/assets/stylesheets/select2-bootstrap";
+@import "base/helpers";
+@import "base/typography";
+@import "base/global";
+
+@import "home/layout";
+@import "home/pages";
+@import "home/index";

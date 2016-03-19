@@ -1,0 +1,7 @@
+- if object && object.errors.size > 0
+  .alert.alert-danger{ role: 'alert', style: 'margin-bottom: 20px;'}
+    .alert-title= 'Save could not be completed'
+    %ul
+      - @profile.errors.each do |attr, msg|
+        - if @profile.errors[attr].first == msg
+          = "<li>#{msg}</li>".html_safe

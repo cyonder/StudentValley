@@ -1,0 +1,16 @@
+- if current_path?(received_requests_path(current_user.id))
+  - title = 'Received Connection Requests'
+- elsif current_path?(sent_requests_path(current_user.id))
+  - title = 'Sent Connection Requests'
+- else
+  - title = 'Connections'
+
+.section-title.pull-left= title
+- if current_path?(connections_path(current_user.id)) || current_path?(received_requests_path(current_user.id)) || current_path?(sent_requests_path(current_user.id))
+  .section-tools.pull-right
+    = link_to received_requests_path(current_user.id), class: 'btn btn-default btn-xs tag-tooltip', data: {toggle: 'tooltip'},
+      'data-original-title': 'Received', 'data-placement': 'bottom' do
+      %span.glyphicon.glyphicon-log-in
+    = link_to sent_requests_path(current_user.id), class: 'btn btn-default btn-xs tag-tooltip', data: {toggle: 'tooltip'},
+      'data-original-title': 'Sent', 'data-placement': 'bottom' do
+      %span.glyphicon.glyphicon-log-out

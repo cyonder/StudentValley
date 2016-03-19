@@ -1,0 +1,67 @@
+-title('Profile Settings')
+
+.section-container
+  .section-header
+    .section-title= 'Change Profile Photo'
+  = form_for :user, html: {multipart: true}, url: profile_settings_path do |f|
+    = hidden_field_tag 'attribute', 'photo', id: nil
+    .clearfix
+      .settings-photo.pull-left= image_tag @profile.photo.url(:thumb)
+      .pull-left
+        .input-group.form-control-lg{style: 'margin-bottom: 26px'}
+          %span.input-group-btn
+            %span.btn.btn-primary.btn-file
+              Browse... #{f.file_field :photo}
+          %input.form-control{readonly: '', type: 'text'}
+        = button_tag type: 'submit', class: 'btn btn-success', value: 'upload' do
+          %span.glyphicon.glyphicon-ok.icon-spacer
+          Upload Photo
+        = button_tag type: 'submit', class: 'btn btn-danger', value: 'delete' do
+          %span.glyphicon.glyphicon-remove.icon-spacer
+          Delete Photo
+.section-container
+  .section-header
+    .section-title= 'Update Profile Information'
+  = form_for :user, url: profile_settings_path do |f|
+    = hidden_field_tag 'attribute', 'profile', id: nil
+    %table.horizontal-form
+      %col{span: 1, style: 'width: 114px'}
+      %col{span: 1, style: 'width: 425px'}
+      %tr
+        %td
+          = f.label :first_name, 'First Name'
+        %td
+          = f.text_field :first_name, class: 'form-control form-control-lg', placeholder: 'First Name'
+      %tr
+        %td
+          = f.label :last_name, 'Last Name'
+        %td
+          = f.text_field :last_name, class: 'form-control form-control-lg', placeholder: 'Last Name'
+      %tr
+        %td
+          = f.label :school, 'School'
+        %td
+          = f.text_field :school, class: 'form-control form-control-lg', placeholder: 'School'
+      %tr
+        %td
+          = f.label :program, 'Program'
+        %td
+          = f.text_field :program, class: 'form-control form-control-lg', placeholder: 'Program'
+      %tr
+        %td
+          = f.label :website, 'Website'
+        %td
+          .input-group.form-control-lg
+            .input-group-addon= 'http://'
+            = f.text_field :website, class: 'form-control', placeholder: 'Website'
+      %tr
+        %td
+          = f.label :information, 'Information'
+        %td
+          = f.text_area :information, class: 'form-control form-control-lg', maxlength: 150, placeholder: 'Information'
+      %tr
+        %td
+        %td
+          = button_tag type: 'submit', class: 'btn btn-success' do
+            %span.glyphicon.glyphicon-ok.icon-spacer
+            Save

@@ -1,0 +1,38 @@
+%table.horizontal-form
+  %col{span: 1, style: 'width: 114px'}
+  %col{span: 1, style: 'width: 425px'}
+  %tr
+    %td
+      = f.label :photo, 'Room Photo'
+    %td
+      .input-group.form-control-md
+        %span.input-group-btn
+          %span.btn.btn-primary.btn-file
+            %span.glyphicon.glyphicon-camera{style: 'color: white'} #{f.file_field :photo}
+        %input.form-control{readonly: '', type: 'text'}
+  %tr
+    %td
+      = f.label :street_number, 'Address'
+    %td
+      = f.text_field :street_number,  class: 'form-control form-control-xsm form-control-inline', placeholder: 'Street Number'
+      = f.text_field :street_name,  class: 'form-control form-control-xsm form-control-inline', placeholder: 'Street Name'
+      = f.text_field :postal_code,  class: 'form-control form-control-xsm form-control-inline', placeholder: 'Postal Code'
+  %tr
+    %td
+      = f.label :city, 'Location'
+    %td
+      = f.text_field :city, class: 'form-control form-control-xlg form-control-inline', placeholder: 'City'
+      .form-control-inline.select2-fix= f.select :province, options_for_roommates, {prompt: 'Select a Province'}, class: 'form-control select-roommate form-control-xlg'
+  %tr
+    %td
+      = f.label :price, 'Price'
+    %td
+      .input-group.form-control-md
+        .input-group-addon= '$'
+        = f.text_field :price, class: 'form-control', placeholder: '0.00', data: {autonumeric: {vMax: '99999.99'}}
+  %tr
+    %td
+      = f.label :month, 'Available on'
+    %td
+      .form-control-inline= f.select :month, options_for_roommates_month, {prompt: 'Month'}, class: 'form-control select-roommate form-control-xxsm'
+      .form-control-inline= f.select :day, options_for_roommates_day, {prompt: 'Day'}, class: 'form-control select-roommate form-control-xxsm'

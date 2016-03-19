@@ -1,0 +1,51 @@
+#left-column
+  .section-container
+    .profile-photo= image_tag @profile.photo.url(:profile)
+
+    .profile-name= link_to "#{@profile.first_name} #{@profile.last_name}", profile_path(@profile.id)
+
+    - unless @profile.information.blank?
+      .profile-info= @profile.information
+
+    .profile-stats.clearfix
+      .profile-stat.pull-left
+        = link_to connections_path(@profile.id), { class: 'btn btn-default' } do
+          %strong= @profile.friends.size
+          %span= 'Connections'
+      .profile-stat.pull-right
+        = link_to '#', { class: 'btn btn-default' } do
+          %strong= 0
+          %span= 'Courses'
+
+  .profile-buttons-container
+    = display_profile_buttons
+
+  .section-container
+    .section-header
+      .section-title= 'About'
+
+    - unless @profile.school.blank?
+      .profile-about-item
+        %span.glyphicon.glyphicon-education.icon-spacer
+        = @profile.school
+
+    - unless @profile.program.blank?
+      .profile-about-item
+        %span.glyphicon.glyphicon-blackboard.icon-spacer
+        = @profile.program
+
+    .profile-about-item
+      %span.glyphicon.glyphicon-envelope.icon-spacer
+      = @profile.email
+
+    - unless @profile.website.blank?
+      .profile-about-item
+        %span.glyphicon.glyphicon-link.icon-spacer
+        = @profile.website
+
+    .profile-about-item
+      %span.glyphicon.glyphicon-calendar.icon-spacer
+      = "Joined on #{@profile.join_date}"
+
+#right-column
+  = display_profile_content
